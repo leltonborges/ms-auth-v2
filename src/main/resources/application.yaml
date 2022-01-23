@@ -1,0 +1,31 @@
+server:
+  port: 8095
+  servlet:
+    context-path: /auth
+
+spring:
+  application:
+    name: app-auth
+  profiles:
+    active: test
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDB10Dialect
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:mariadb://${HOST_DB:localhost}:${DB_PORT:3306}/${DB_NAME:auth-v2}?createDatabaseIfNotExist=true
+    username: ${DB_USER:study}
+    password: ${DB_PASS:123}
+    driver-class-name: org.mariadb.jdbc.Driver
+
+security:
+  jwt:
+    token:
+      secret-key: SECRET_KEY
+      expire-length: 86400
