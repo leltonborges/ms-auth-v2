@@ -27,7 +27,7 @@ public class User implements Serializable, UserDetails {
     private String userName;
     @Column(nullable = false)
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Permission> permissions =  new HashSet<>();
 
     @Override

@@ -12,8 +12,8 @@ import java.util.Set;
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 952403064025384715L;
 
-    private Long id;
+//    private Long id;
     private String userName;
     private String password;
-    private Set<Permission> permissions =  new HashSet<>();
+//    private Set<Permission> permissions =  new HashSet<>();
 }

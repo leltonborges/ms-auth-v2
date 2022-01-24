@@ -33,7 +33,7 @@ public class JWTTokernProvider {
         secretKey= Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String userName, Set<String> roles){
+    public String createToken(String userName){
         Claims claims = Jwts.claims()
                 .setSubject(userName)
                 .setExpiration(new Date(System.currentTimeMillis()+expireToken))
@@ -60,7 +60,7 @@ public class JWTTokernProvider {
 
     public String resolveToken(HttpServletRequest request){
         String bearerToken  = request.getHeader("Authorization");
-        if(!bearerToken.equals(null) && bearerToken.startsWith("Bearer ")) {
+        if(bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.replaceFirst("Bearer ", bearerToken);
         }
         return null;
